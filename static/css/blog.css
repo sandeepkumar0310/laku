@@ -1,0 +1,188 @@
+.navbar-nav .nav-link {
+    color: #fff;
+  }
+  .dropend .dropdown-toggle {
+    color: salmon;
+    margin-left: 1em;
+  }
+  .dropdown-item:hover {
+    background-color: lightsalmon;
+    color: #fff;
+  }
+  .dropdown .dropdown-menu {
+    display: none;
+  }
+  .dropdown:hover > .dropdown-menu,
+  .dropend:hover > .dropdown-menu {
+    display: block;
+    margin-top: 0.125em;
+    margin-left: 0.125em;
+  }
+  @media screen and (min-width: 769px) {
+    .dropend:hover > .dropdown-menu {
+      position: absolute;
+      top: 0;
+      left: 100%;
+    }
+    .dropend .dropdown-toggle {
+      margin-left: 0.5em;
+    }
+  }
+
+    .errorlist{
+        color: red;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .navbar-nav .nav-link {
+        color: #fff;
+    }
+
+    .dropend .dropdown-toggle {
+        color: salmon;
+        margin-left: 1em;
+    }
+
+    .dropdown-item:hover {
+        background-color: lightsalmon;
+        color: #fff;
+    }
+
+    .dropdown .dropdown-menu {
+        display: none;
+    }
+
+    .dropdown:hover>.dropdown-menu,
+    .dropend:hover>.dropdown-menu {
+        display: block;
+        margin-top: 0.125em;
+        margin-left: 0.125em;
+    }
+
+    @media screen and (min-width: 769px) {
+        .dropend:hover>.dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+        }
+
+        .dropend .dropdown-toggle {
+            margin-left: 0.5em;
+        }
+    }
+    .blog-post{
+        margin:30px auto;
+        width:693px;  
+        background-color: #ccc;
+        padding: 20px; 
+        border-radius: 10px;
+    }
+    .like{
+        color: #f30000 !important;
+        font-size: 20px;
+    }
+    .custom-like{
+        color:#364e52;
+        margin-right: 10px;
+    }
+    .comm_wrap{
+        height: 200px; overflow: auto; overflow-x:hidden; margin-top: 20px;
+    }
+    .nav_wrap{
+        background-color: salmon;
+    }
+
+
+    .profile-section{
+        background-color: red; 
+        padding: 18px 25px; 
+        border-radius: 50%; 
+        text-align: center; 
+        display: inline-block; 
+        color: #fff;
+    }
+    .open-work{
+        margin-left: 20px;
+    }
+    .open-work p{
+        margin: 0;
+        color: #222; 
+        font-weight: bold;
+    }
+    .like-btn a{
+        text-decoration: none; 
+        margin-right: 20px;
+    }
+    .like-btn a span{
+        color: #222;
+    }
+    .like-btn i{
+        color:#364e52;  
+        margin-right: 10px;
+    }
+    .share-btn a{
+        text-decoration: none;
+        color:#364e52;  
+    }
+    .share-btn i{
+        color:#364e52;
+        margin-right: 10px;
+    }
+    .share-btn a span{
+        color:#364e52;
+        margin-right: 10px;
+    }
+    .input-box{
+        position: relative;
+    }
+    .input-box textarea{
+        outline: none;
+         border: none; 
+         border-radius: 3px;
+    }
+    .input-box button{
+        position: absolute; 
+        top: 14px;
+        right: 17px;
+    }
+    .comment-img span{
+        background-color: red; 
+        padding: 10px 17px; 
+        border-radius: 50%; 
+        text-align: center; 
+        display: inline-block; 
+        color: #fff;
+    }
+    .comment-custom{
+        background-color: #fff; 
+        padding: 20px; 
+        border-radius: 10px;
+         margin-left: 0px;
+    }
+    .comment-custom p:first-child{
+        font-weight: bold;
+    }
+    .comment-custom p{
+        margin: 0;
+        color: #222; 
+        font-size: 13px;
+    }
+    .profile-section{
+        border-radius: 50%;
+    }
+    .my-name-section{
+        margin-top: 20px;
+    }
+    .images-blog{
+        margin: 20px 0;
+    }
+    .person-img img{
+        width: 100%;
+    }
+    .drop-down-list{
+        margin-top:30px;
+    }
+    .input-section{
+        margin-top: 20px;
+    }

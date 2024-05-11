@@ -1,0 +1,212 @@
+
+
+{% load static %}
+{% load custom_tags %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<!-- Fontawsom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+    .navbar-nav .nav-link {
+        color: #fff;
+    }
+
+    .dropend .dropdown-toggle {
+        color: salmon;
+        margin-left: 1em;
+    }
+
+    .dropdown-item:hover {
+        background-color: lightsalmon;
+        color: #fff;
+    }
+
+    .dropdown .dropdown-menu {
+        display: none;
+    }
+
+    .dropdown:hover>.dropdown-menu,
+    .dropend:hover>.dropdown-menu {
+        display: block;
+        margin-top: 0.125em;
+        margin-left: 0.125em;
+    }
+
+    @media screen and (min-width: 769px) {
+        .dropend:hover>.dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+        }
+
+        .dropend .dropdown-toggle {
+            margin-left: 0.5em;
+        }
+    }
+    .blog-post{
+        margin:30px auto;
+        width:693px;  
+        background-color: #ccc;
+        padding: 20px; 
+        border-radius: 10px;
+    }
+    .like{
+        color: #f30000 !important;
+        font-size: 20px;
+    }
+    .custom-like{
+        color:#364e52;
+        margin-right: 10px;
+    }
+    .comm_wrap{
+        height: 200px; overflow: auto; overflow-x:hidden; margin-top: 20px;
+    }
+    
+</style>
+
+<!-- show list all blog -->
+
+<div class="blog-post">
+    <div class="row">
+        <div class="col-sm-1" style="border-radius: 50%; ">
+            <div class="profile-section">
+                <span
+                    style="background-color: red; padding: 18px 25px; border-radius: 50%; text-align: center; display: inline-block; color: #fff;">{{i.user.name|first}}</span>
+            </div>
+        </div>
+        <div class="col-sm-11 ">
+            <div class="open-work" style="margin-left: 20px;">
+                <p style="margin: 0; color: #222; font-weight: bold;">{{i.user.name|title}}</p>
+                <p style="margin: 0; color: #222; font-size: 13px;"> {{i.place_name}} </p>
+                {% post_dateformat i.start_date as blog_date %}
+                <p style="margin: 0;color: #222; font-size: 13px;"> {{blog_date}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="my-name-section" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-ms-12">
+                <div class="text-name">
+                    <p>{{i.discription}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="images-blog" style="margin: 20px 0;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="person-img">
+                    <img src="{{i.image.url}}"
+                        alt="image" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10">
+            {% get_com_count i.id as count_com %}
+
+            <div class="like-btn">
+                {% check_like i.id request.user.id as check_like_val %}
+                {% total_c_like i.id as all_c_likes %}
+                <a href="javascript:void(0) " onclick="submit_like('{{i.id}}')" style="text-decoration: none; margin-right: 20px;"><i
+                        class="fa-regular fa-thumbs-up custom-like check_like_cls_{{i.id}}  {% if check_like_val > 0 %} like {% endif %}"></i>
+                        <span class="like_total_{{i.id}}" style="color: #222;">{{all_c_likes}} Like</span></a>
+                <a href="javascript:void(0) " onclick="comment('{{i.id}}')" style="text-decoration: none;"><i class="fa-regular fa-comment"
+                        style="color:#364e52;  margin-right: 10px;"></i><span class="count_comment_of_{{i.id}}" style="color: #222;">{{count_com}} Comment</span></a>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="share-btn">
+                <a href="javascript:void(0)" class="share_button_action" data-blog_id="{{i.id}}" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-share-nodes "
+                        style="color:#364e52;  margin-right: 10px;"></i><span style="color: #222;">Share</span></a>
+            </div>
+
+        </div>
+    </div>
+    <div class="input-section" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="input-box" style="position: relative;">
+                    <div class="comment_message_{{i.id}} d-none"> 
+                    <textarea name="comment_message" id="comment_message_{{i.id}}"
+                        class="bor-0 w-100 rounded-xxl pr-5 ps-2 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg"
+                        cols="10" rows="2" placeholder="Write a comment..." required=""
+                        style="outline: none; border: none; border-radius: 3px;"></textarea>
+                  
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn" onclick="submit_commeent('{{i.id}}')"
+                        style="position: absolute; top: 14px;right: 17px;">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Share On Email</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+
+                                </div>
+                                <form method="post" action="{% url 'share-blog' %}">
+                                    {% csrf_token %}
+                                <div class="modal-body">
+                                    <div class="emails-1">
+                                        <label for="exampleFormControlInput1" class="form-label">enter your Email address</label>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+                                            <input type="hidden" class="blog_id_data" name="blog_id" value="" id="blog_id"/>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% get_comment i.id as comment_list %}
+
+                    <div class="over-flow-content list_blog_c_{{i.id}} {% if comment_list %} comm_wrap {% endif %}">
+                        {% for c in  comment_list %}
+                        <div class="drop-down-list" style="margin-top:30px;">
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <div class="comment-img">
+                                        <span
+                                            style="background-color: red; padding: 10px 17px; border-radius: 50%; text-align: center; display: inline-block; color: #fff;">{{c.user.name|first}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-11">
+                                    <div class="comment-img"
+                                        style="background-color: #fff; padding: 20px; border-radius: 10px; margin-left: 0px;">
+                                        <p style="margin: 0; color: #222; font-weight: bold;">{{c.user.name}}</p>
+                                        {% post_dateformat c.start_date as blog_date_c %}
+
+                                        <p style="margin: 0;color: #222; font-size: 13px;"> {{blog_date_c}}</p>
+                                        <p>{{c.message}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+
+

@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Fontawsom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <!--============================================ Header SEction Start Here===================================================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark nav_wrap">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dashboard/">Post Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all-blog/">All Blog List</a>
+    
+                    </li>
+    
+                    <li class="nav-item">
+                        <a href="/logout/" class="nav-link">Logout</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search" action="{% url 'all-blog' %}" method="GET">
+                    <input class="form-control me-2" type="search" name="search" value="{% if q %}{{q}}{% endif %}" placeholder="Search by place name" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!--============================================ Header SEction Start End===================================================== -->
+    {% block content %}
+    {% endblock %}
+    <!-- Java Script -->
+    <script src="{% static 'js/jquery-min.js'%}"></script>
+    <script src="{% static 'js/bootstrap-min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
+  </body>
+</html>
