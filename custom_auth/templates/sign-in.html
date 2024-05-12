@@ -19,7 +19,7 @@
     margin: 0 auto;
 }
 .custom-form {
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +69,7 @@
                               <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" autocomplete="new-password">
                           </div>
-                          {{form.password.errors}}
+                         <span class="errorlist">{{form.password.errors}}</span> 
                         </div>
                        
                         <div class="col-12">

@@ -12,7 +12,7 @@ phone_number     = RegexValidator(r"^(\+?[0-9]{10,15})$", "Please enter valid mo
 
 class SignInForm(forms.Form):
     email        =       forms.EmailField(required=True)
-    password            =       forms.CharField(required=True)
+    password     =       forms.CharField(required=True)
 
     def clean_password(self):
         password    =   self.cleaned_data['password']
