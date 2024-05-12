@@ -217,6 +217,7 @@
     }
     .card.border-light-subtle {
         max-width: 516px;
+        margin: 0 auto;
     }
     /*@media css */
     @media all  and (max-width:767px) {
