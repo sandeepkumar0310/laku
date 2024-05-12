@@ -1,5 +1,6 @@
 <!-- Login 8 - Bootstrap Brain Component -->
 {% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -69,7 +70,7 @@
                               <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" autocomplete="new-password">
                           </div>
-                         <span class="errorlist">{{form.password.errors}}</span> 
+                         <span class="errorlist">{{form.password.errors|striptags}}</span> 
                         </div>
                        
                         <div class="col-12">
