@@ -122,17 +122,17 @@
                         {% for c in  comment_list %}
                         <div class="drop-down-list">
                             <div class="row">
-                                <div class="col-sm-2">
-                                    <div class="comment-img">
-                                        <span>{{c.user.name|first}}</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-11">
-                                    <div class="comment-img comment-custom">
-                                        <p>{{c.user.name|title}}</p>
-                                        {% post_dateformat c.start_date as blog_date_c %}
-                                        <p> {{blog_date_c}}</p>
-                                        <p>{{c.message}}</p>
+                                <div class="col-sm-12">
+                                    <div class="custom-new-blog-section d-flex">
+                                        <div class="comment-img">
+                                            <span>{{c.user.name|first}}</span>
+                                        </div>
+                                        <div class="comment-img comment-custom">
+                                            <p>{{c.user.name|title}}</p>
+                                            {% post_dateformat c.start_date as blog_date_c %}
+                                            <p> {{blog_date_c}}</p>
+                                            <p>{{c.message}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

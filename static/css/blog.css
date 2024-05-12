@@ -158,11 +158,12 @@
         display: inline-block; 
         color: #fff;
     }
-    .comment-custom{
-        background-color: #fff; 
-        padding: 20px; 
+    .comment-custom {
+        background-color: #fff;
+        padding: 20px;
         border-radius: 10px;
-         margin-left: 0px;
+        margin-left: 15px;
+        width: 100% !important;
     }
     .comment-custom p:first-child{
         font-weight: bold;
@@ -206,6 +207,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+    .new-like-definebtn{
+        display: flex;
+        justify-content: space-between;
+    }
+    .custom-drop-list-new{
+        display: flex;
     }
     /*@media css */
     @media all  and (max-width:767px) {
