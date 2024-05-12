@@ -6,20 +6,26 @@
 {% block content %}
 
 <!-- show list all blog -->
+{% if all_list %}
 {% for i in all_list %}
 <div class="blog-post">
     <div class="row">
-        <div class="col-sm-1">
-            <div class="profile-section">
-                <span>{{i.user.name|title|first}}</span>
-            </div>
-        </div>
-        <div class="col-sm-11 ">
-            <div class="open-work">
-                <h5>{{i.user.name|title}}</h5>
-                <h6> {{i.place_name}} </h6>
-                {% post_dateformat i.start_date as blog_date %}
-                <p> {{blog_date}}</p>
+        <div class="col-sm-12">
+            <div class="main-blog-section">
+                <div class="profile-name d-flex justify-content-flex-start">
+                    <div class="profile-section">
+                        <span>{{i.user.name|title|first}}</span>
+                    </div>
+                    <div class="open-work">
+                        <h5>{{i.user.name|title}}</h5>
+                        <h6> {{i.place_name}} </h6>
+                        {% post_dateformat i.start_date as blog_date %}
+                        <p> {{blog_date}}</p>
+                    </div>
+                </div>
+                <div class="delete-icon">
+                    <a href="/delete-blog/{{i.id}}/" title="Delete"><i class="fa-solid fa-trash"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -44,9 +50,10 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-12">
             {% get_com_count i.id as count_com %}
 
+           <div class="custom-like-section">
             <div class="like-btn">
                 {% check_like  i.id request.user.id as check_like_val %}
                 {% total_c_like i.id as all_c_likes %}
@@ -56,14 +63,13 @@
                 <a href="javascript:void(0) " onclick="comment('{{i.id}}')"><i class="fa-regular fa-comment"
                         ></i><span class="count_comment_of_{{i.id}}">{{count_com}} Comment</span></a>
             </div>
-        </div>
-        <div class="col-sm-2">
             <div class="share-btn">
                 <a href="javascript:void(0)" class="share_button_action" data-blog_id="{{i.id}}" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-share-nodes "
                         ></i>Share</span></a>
             </div>
-
+           </div>
         </div>
+       
     </div>
     <div class="input-section">
         <div class="row">
@@ -116,7 +122,7 @@
                         {% for c in  comment_list %}
                         <div class="drop-down-list">
                             <div class="row">
-                                <div class="col-sm-1">
+                                <div class="col-sm-2">
                                     <div class="comment-img">
                                         <span>{{c.user.name|first}}</span>
                                     </div>
@@ -139,6 +145,8 @@
     </div>
 </div>
 {% endfor %}
+{% else %}
+<h3 class="d-flex justify-content-center mt-3 mb-3"> No Record Found</h3>
 
 <nav aria-label="Page navigation example ">
     <ul class="pagination d-flex justify-content-center">
@@ -157,6 +165,7 @@
         {% endif %}
     </ul>
 </nav>
+{% endif %}
 {% endblock %}
 
 

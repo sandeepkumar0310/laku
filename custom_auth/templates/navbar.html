@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- Fontawsom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
 
@@ -24,13 +26,18 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse headermav_wrap" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/dashboard/">Post Blog</a>
+                        <a class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}" aria-current="page" href="/dashboard/">Post Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/all-blog/">All Blog List</a>
+                        <a class="nav-link {% if request.path == '/all-blog/' %}active{% endif %}" href="/all-blog/">All Blog</a>
+    
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/your-blog/' %}active{% endif %}" href="/your-blog/">Your Blog</a>
     
                     </li>
     
@@ -45,13 +52,26 @@
             </div>
         </div>
     </nav>
+    
     <!--============================================ Header SEction Start End===================================================== -->
     {% block content %}
     {% endblock %}
     <!-- Java Script -->
     <script src="{% static 'js/jquery-min.js'%}"></script>
     <script src="{% static 'js/bootstrap-min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            {% if messages %}
+            {% for message in messages %}
+            showToast("{{ message }}", "{{ message.tags }}");
+            {% endfor %}
+            {% endif %}
+        });
+        </script>
+
 
   </body>
 </html>

@@ -14,9 +14,7 @@ def get_com_count(id):
 
 @register.simple_tag
 def check_like(blog_id,user_id):
-    print(blog_id,'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu')
     data_c = LikeOnBlog.objects.filter(blog_id =blog_id,user_id = user_id ).count()
-    print(data_c,'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
     return data_c
 
 @register.simple_tag
@@ -30,28 +28,28 @@ def post_dateformat(d):
         diff = timezone.now() - d
         s = diff.seconds
         if diff.days == 365:
-          return '1 yr '
+          return '1 year '
         elif diff.days > 365:
-          return '{} yr'.format(round(diff.days/365))
+          return '{} year'.format(round(diff.days/365))
         if diff.days == 30:
           return '1 month'
         elif diff.days > 30:
           return '{} month'.format(round(diff.days/30))
         elif diff.days == 1:
-            return '1 d'
+            return '1 day'
         elif diff.days > 1:
             return '{} d'.format(diff.days)
         elif s <= 1:
             return 'just now'
         elif s < 60:
-            return '{} sec'.format(s)
+            return '{} second'.format(s)
         elif s < 120:
-            return '1 min'
+            return '1 munite'
         elif s < 3600:
-            return '{} min'.format(round(s/60))
+            return '{} munite'.format(round(s/60))
         elif s < 7200:
-            return '1 h'
+            return '1 hour'
         else:
-            return '{} h'.format(round(s/3600))
+            return '{} hour'.format(round(s/3600))
     else:
         return d

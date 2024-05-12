@@ -80,7 +80,4 @@ class LikeOnBlog(models.Model):
     
 
 
-# ssh -i "codemantra.pem" ubuntu@16.171.17.17
-
-# ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '#bhaji';
 

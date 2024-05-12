@@ -11,6 +11,10 @@ urlpatterns = [
     path('save-comment/', save_comment),
     path('save-like/', save_like),
     path('share-blog/', share_blog,name="share-blog"),
+    path('your-blog/',YourBlog.as_view(), name="your-blog"),
+    path('delete-blog/<id>/',DeleteBlog.as_view(), name="delete-blog")
+
+    
 
     
 
