@@ -70,7 +70,8 @@
                               <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" autocomplete="new-password">
                           </div>
-                         <span class="errorlist">{{form.password.errors|striptags}}</span> 
+                 
+                         <span class="errorlist">{{ form.password.errors|first|striptags|slice:"2:-2" }}</span>
                         </div>
                        
                         <div class="col-12">
