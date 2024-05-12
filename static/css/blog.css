@@ -215,6 +215,9 @@
     .custom-drop-list-new{
         display: flex;
     }
+    .card.border-light-subtle {
+        max-width: 516px;
+    }
     /*@media css */
     @media all  and (max-width:767px) {
         .blog-post {
