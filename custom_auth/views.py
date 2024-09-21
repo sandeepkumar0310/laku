@@ -14,7 +14,6 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.contrib import messages
 
-# Create your views here.
 
 # SignIn View
 class SignIn(View):
@@ -73,7 +72,8 @@ class Dashboard(View):
             post.user = request.user
             post.save()
             messages.success(request, "blog posted successfully")
-            return redirect('/all-blog/')  # Redirect to post detail page
+            # Redirect to post detail page
+            return redirect('/all-blog/')  
         return render(request, 'dashboard.html', {'form': form})
     
         
@@ -81,7 +81,8 @@ class Dashboard(View):
 class BlogList(View):
     @method_decorator(login_required, name='dispatch')
     def get(self,request):
-        q = request.GET.get('search')  # Get the search query from the request
+        # Get the search query from the request
+        q = request.GET.get('search')  
         if q:
             all_list_q = PostBlog.objects.filter(place_name__icontains=q).count()
             if all_list_q:
@@ -106,7 +107,8 @@ class BlogList(View):
 class YourBlog(View):
     @method_decorator(login_required, name='dispatch')
     def get(self,request):
-        q = request.GET.get('search')  # Get the search query from the request
+         # Get the search query from the request
+        q = request.GET.get('search') 
         if q:
             all_list_q = PostBlog.objects.filter(place_name__icontains=q,user_id = request.user.id).count()
             if all_list_q:

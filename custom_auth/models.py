@@ -1,5 +1,4 @@
 from django.db import models
-# Create your models here.
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext as _
 from django.contrib.auth.base_user import BaseUserManager
@@ -63,7 +62,7 @@ class CommentOnBlog(models.Model):
     
 class LikeOnBlog(models.Model):
     user            = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
-    blog         = models.ForeignKey(PostBlog,on_delete=models.CASCADE,null=True)
+    blog            = models.ForeignKey(PostBlog,on_delete=models.CASCADE,null=True)
     start_date      = models.DateTimeField(auto_now_add=True,null=True)
     
 
